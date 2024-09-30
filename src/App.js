@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Dashbord from './components/Dashbord';
+import Adduser from './components/Adduser';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getusers } from './Redux/Action';
 
 function App() {
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(getusers())
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{display:"flex",justifyContent:"center",flexDirection:"column",width:"100%",textAlign:"center",gap:"50px",marginTop:"5%",}} className="App">
+      <Adduser/>
+      <Dashbord />
+      
     </div>
-  );
+  );  
 }
 
 export default App;
